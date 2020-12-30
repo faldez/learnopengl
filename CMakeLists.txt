@@ -18,6 +18,7 @@ set(EXECUTABLES_SRC
     "src/Texture.cpp"
     "src/Transformation.cpp"
     "src/Coordinate Systems.cpp"
+    "src/Camera.cpp"
 )
 
 foreach(src ${EXECUTABLES_SRC})
