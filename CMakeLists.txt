@@ -10,17 +10,17 @@ add_subdirectory(deps/glfw-3.3.3)
 add_subdirectory(deps/glm)
 
 set(EXECUTABLES_SRC 
-    "src/Hello Window.cpp"
-    "src/Hello Rectangle.cpp"
-    "src/Hello Triangle Exercise 1.cpp"
-    "src/Hello Triangle Exercise 2.cpp"
-    "src/Hello Triangle Exercise 3.cpp"
-    "src/Uniform.cpp"
-    "src/Texture.cpp"
-    "src/Transformation.cpp"
-    "src/Coordinate Systems.cpp"
-    "src/Camera.cpp"
-    "src/Colors.cpp"
+    "src/1_Hello Window.cpp"
+    "src/2_Hello Rectangle.cpp"
+    "src/3_Hello Triangle Exercise 1.cpp"
+    "src/3_Hello Triangle Exercise 2.cpp"
+    "src/3_Hello Triangle Exercise 3.cpp"
+    "src/4_Uniform.cpp"
+    "src/5_Texture.cpp"
+    "src/6_Transformation.cpp"
+    "src/7_Coordinate Systems.cpp"
+    "src/8_Camera.cpp"
+    "src/9_Colors.cpp"
 )
 
 foreach(src ${EXECUTABLES_SRC})
