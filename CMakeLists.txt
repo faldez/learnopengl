@@ -9,27 +9,64 @@ find_package(OpenGL REQUIRED)
 add_subdirectory(deps/glfw-3.3.3)
 add_subdirectory(deps/glm)
 
-set(EXECUTABLES_SRC 
-    "src/1_Hello Window.cpp"
-    "src/2_Hello Rectangle.cpp"
-    "src/3_Hello Triangle Exercise 1.cpp"
-    "src/3_Hello Triangle Exercise 2.cpp"
-    "src/3_Hello Triangle Exercise 3.cpp"
-    "src/4_Uniform.cpp"
-    "src/5_Texture.cpp"
-    "src/6_Transformation.cpp"
-    "src/7_Coordinate Systems.cpp"
-    "src/8_Camera.cpp"
-    "src/9_Colors.cpp"
+set(CHAPTERS 
+    "hello_Window"
+    "hello_triangle"
+    "uniform"
+    "texture"
+    "transformation"
+    "coordinate_systems"
+    "camera"
+    "colors"
 )
 
-foreach(src ${EXECUTABLES_SRC})
-    string( REPLACE "src/" "" execname ${src} )
-    string( REPLACE ".cpp" "" execname ${execname} )
-    string( REPLACE " " "" execname ${execname} )
-    add_executable(${execname} ${src} src/glad.c src/stb_image.cpp src/shader.cpp)
-    target_include_directories(${execname} PRIVATE include)
-    target_link_libraries(${execname} glfw)
-    target_link_libraries(${execname} glm)
-    target_link_libraries(${execname} OpenGL::GL)
-endforeach(src ${EXECUTABLES_SRC})
+set(hello_window
+    "hello_window.cpp"
+)
+
+set(hello_triangle
+    "hello_rectangle.cpp"
+    "hello_triangle_exercise_1.cpp"
+    "hello_triangle_exercise_2.cpp"
+    "hello_triangle_exercise_3.cpp"
+)
+
+set(uniform
+    "uniform.cpp"
+)
+
+set(texture
+    "texture.cpp"
+)
+
+set(transformation
+    "transformation.cpp"
+)
+
+set(coordinate_systems
+    "coordinate_systems.cpp"
+)
+
+set(camera
+    "camera.cpp"
+)
+
+set(colors
+    "colors.cpp"
+)
+
+foreach(chapter ${CHAPTERS})
+    foreach(src ${${chapter}})
+        string( REPLACE ".cpp" "" execname ${src} )
+        add_executable(${execname} src/${chapter}/${src} src/glad.c src/stb_image.cpp src/shader.cpp)
+        target_include_directories(${execname} PRIVATE include)
+        target_link_libraries(${execname} glfw)
+        target_link_libraries(${execname} glm)
+        target_link_libraries(${execname} OpenGL::GL)
+        file(GLOB SHADERS
+            "src/${chapter}/*.vert"
+            "src/${chapter}/*.frag"
+        )
+        file(COPY ${SHADERS} DESTINATION ${CMAKE_SOURCE_DIR}/build)
+    endforeach(src ${${chapter}})
+endforeach(chapter ${CHAPTERS})
