@@ -18,6 +18,7 @@ set(CHAPTERS
     "coordinate_systems"
     "camera"
     "colors"
+    "basic_lighting"
 )
 
 set(hello_window
@@ -53,6 +54,10 @@ set(camera
 
 set(colors
     "colors.cpp"
+)
+
+set(basic_lighting
+    "basic_lighting.cpp"
 )
 
 foreach(chapter ${CHAPTERS})
